@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EKE-Universe Blacklist</title>
+</head>
+<body>
+    <div id="blacklist-text"></div>
+
+    <script>
+        fetch('https://bbforest.net/EKE-Universe/blacklist/')
+            .then(response => response.text())
+            .then(data => {
+                const blacklistText = document.getElementById('blacklist-text');
+                blacklistText.innerText = data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    </script>
+</body>
+</html>
