@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>EKE-Universe Blacklist</title>
+    <title>Blacklist Text</title>
 </head>
 <body>
     <div id="blacklist-text"></div>
 
     <script>
-        fetch('https://bbforest.net/EKE-Universe/blacklist/')
-            .then(response => response.text())
-            .then(data => {
+        const request = new XMLHttpRequest();
+        request.open('GET', 'https://skyeon15.github.io/EKE-Universe/blacklist.txt', true);
+        request.onreadystatechange = function() {
+            if (request.readyState === 4 && request.status === 200) {
+                const data = request.responseText;
                 const blacklistText = document.getElementById('blacklist-text');
                 blacklistText.innerText = data;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+            }
+        };
+        request.send();
     </script>
 </body>
 </html>
